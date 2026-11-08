@@ -1,0 +1,71 @@
+[
+  {
+    "id": "synthetic-invoice-001",
+    "text": "Invoice No: INV-1001\nInvoice Date: 2026-01-15\nSupplier: Northwind Limited\nBill To: Contoso Retail\nCurrency: USD\nWidget A | Qty 2 | Unit 10.00 | Line Total 20.00\nSubtotal: 20.00\nTax: 2.00\nTotal: 22.00",
+    "expected": {
+      "invoice_number": "INV-1001",
+      "invoice_date": "2026-01-15",
+      "supplier_name": "Northwind Limited",
+      "customer_name": "Contoso Retail",
+      "subtotal": 20.0,
+      "tax": 2.0,
+      "total": 22.0,
+      "currency": "USD",
+      "line_items": [
+        {
+          "description": "Widget A",
+          "quantity": 2.0,
+          "unit_price": 10.0,
+          "tax": null,
+          "line_total": 20.0
+        }
+      ]
+    }
+  },
+  {
+    "id": "synthetic-invoice-002",
+    "text": "INVOICE # EU-778\nDate: 02/20/2026\nFrom: Urban Supply\nTo: Helio Traders\nOffice chairs | 3 x 190.00 | 570.00\nVAT 80.00\nGrand Total: 650.00\nEUR",
+    "expected": {
+      "invoice_number": "EU-778",
+      "invoice_date": "02/20/2026",
+      "supplier_name": "Urban Supply",
+      "customer_name": "Helio Traders",
+      "subtotal": null,
+      "tax": 80.0,
+      "total": 650.0,
+      "currency": "EUR",
+      "line_items": [
+        {
+          "description": "Office chairs",
+          "quantity": 3.0,
+          "unit_price": 190.0,
+          "tax": null,
+          "line_total": 570.0
+        }
+      ]
+    }
+  },
+  {
+    "id": "synthetic-invoice-003",
+    "text": "Invoice Number: AC-9007\nInvoice Date: 2026-03-12\nSupplier: Aster Logistics\nLine: Freight service | 1 | 240.00 | 240.00\nSubtotal: 240.00\nTax: 0.00\nTotal: 240.00\nCurrency: BDT",
+    "expected": {
+      "invoice_number": "AC-9007",
+      "invoice_date": "2026-03-12",
+      "supplier_name": "Aster Logistics",
+      "customer_name": null,
+      "subtotal": 240.0,
+      "tax": 0.0,
+      "total": 240.0,
+      "currency": "BDT",
+      "line_items": [
+        {
+          "description": "Freight service",
+          "quantity": 1.0,
+          "unit_price": 240.0,
+          "tax": null,
+          "line_total": 240.0
+        }
+      ]
+    }
+  }
+]

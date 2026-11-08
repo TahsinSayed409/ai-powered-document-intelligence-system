@@ -1,0 +1,56 @@
+# Python
+.env
+.env.*
+!.env.example
+backend/.venv/
+backend/__pycache__/
+backend/**/*.pyc
+backend/*.db
+backend/uploads/
+/.cache/
+backend/.env
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# OS and editor
+.DS_Store
+.vscode/
+*.log
+
+# Local secrets and environment files
+.env
+.env.*
+!.env.example
+
+# Python environments and generated files
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local databases and runtime data
+*.db
+*.sqlite
+*.sqlite3
+uploads/
+backend/uploads/
+
+# Frontend dependencies and build output
+node_modules/
+frontend/node_modules/
+frontend/dist/
+dist/
+
+# Local tools, caches and generated temporary output
+.cache/
+.dist/
+
+# Logs and OS files
+*.log
+.DS_Store
+Thumbs.db

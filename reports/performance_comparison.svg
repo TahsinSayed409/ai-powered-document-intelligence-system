@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="650" viewBox="0 0 1200 650" role="img" aria-labelledby="title description">
+  <title id="title">Phase 6 and Phase 7 performance measurements</title>
+  <desc id="description">Four paired horizontal bar charts compare total processing time, OCR time, embedding generation time, and peak sampled process memory. Phase 6 and Phase 7 runs used small synthetic sets and were not controlled benchmarks.</desc>
+  <defs>
+    <style>
+      text { font-family: "Segoe UI", Arial, sans-serif; fill: #172033; }
+      .title { font-size: 25px; font-weight: 700; }
+      .subtitle { font-size: 14px; fill: #4b5565; }
+      .legend { font-size: 13px; font-weight: 600; }
+      .panel { fill: #ffffff; stroke: #d7dee8; stroke-width: 1.2; }
+      .heading { font-size: 16px; font-weight: 700; }
+      .unit { font-size: 12px; fill: #687386; }
+      .series { font-size: 12px; fill: #354052; }
+      .value { font-size: 12px; font-weight: 700; }
+      .axis { stroke: #aab4c2; stroke-width: 1; }
+      .phase6 { fill: #607995; }
+      .phase7 { fill: #168477; }
+    </style>
+  </defs>
+  <rect width="1200" height="650" fill="#f3f6fa"/>
+
+  <text x="52" y="46" class="title">Phase 6 vs Phase 7: recorded performance</text>
+  <text x="52" y="74" class="subtitle">Small synthetic acceptance runs on the same host; indicative comparison, not a controlled benchmark.</text>
+  <rect x="836" y="92" width="13" height="13" rx="2" class="phase6"/>
+  <text x="856" y="103" class="legend">Phase 6</text>
+  <rect x="937" y="92" width="13" height="13" rx="2" class="phase7"/>
+  <text x="957" y="103" class="legend">Phase 7</text>
+
+  <g transform="translate(48 126)">
+    <rect width="536" height="226" rx="10" class="panel"/>
+    <text x="22" y="34" class="heading">Mean total processing / document</text>
+    <text x="22" y="54" class="unit">Seconds · axis starts at zero</text>
+    <text x="22" y="102" class="series">Phase 6</text>
+    <rect x="100" y="82" width="338" height="28" rx="4" class="phase6"/>
+    <text x="448" y="101" class="value">55.583</text>
+    <text x="22" y="151" class="series">Phase 7</text>
+    <rect x="100" y="131" width="247.7" height="28" rx="4" class="phase7"/>
+    <text x="358" y="150" class="value">40.706</text>
+    <line x1="100" y1="181" x2="438" y2="181" class="axis"/>
+    <line x1="100" y1="177" x2="100" y2="185" class="axis"/>
+    <text x="100" y="202" class="unit">0</text>
+  </g>
+
+  <g transform="translate(616 126)">
+    <rect width="536" height="226" rx="10" class="panel"/>
+    <text x="22" y="34" class="heading">Mean OCR / OCR document</text>
+    <text x="22" y="54" class="unit">Seconds · axis starts at zero</text>
+    <text x="22" y="102" class="series">Phase 6</text>
+    <rect x="100" y="82" width="338" height="28" rx="4" class="phase6"/>
+    <text x="448" y="101" class="value">0.520</text>
+    <text x="22" y="151" class="series">Phase 7</text>
+    <rect x="100" y="131" width="237.3" height="28" rx="4" class="phase7"/>
+    <text x="348" y="150" class="value">0.365</text>
+    <line x1="100" y1="181" x2="438" y2="181" class="axis"/>
+    <line x1="100" y1="177" x2="100" y2="185" class="axis"/>
+    <text x="100" y="202" class="unit">0</text>
+  </g>
+
+  <g transform="translate(48 378)">
+    <rect width="536" height="226" rx="10" class="panel"/>
+    <text x="22" y="34" class="heading">Mean embedding generation / document</text>
+    <text x="22" y="54" class="unit">Seconds · axis starts at zero</text>
+    <text x="22" y="102" class="series">Phase 6</text>
+    <rect x="100" y="82" width="338" height="28" rx="4" class="phase6"/>
+    <text x="448" y="101" class="value">3.101</text>
+    <text x="22" y="151" class="series">Phase 7</text>
+    <rect x="100" y="131" width="196.3" height="28" rx="4" class="phase7"/>
+    <text x="307" y="150" class="value">1.800</text>
+    <line x1="100" y1="181" x2="438" y2="181" class="axis"/>
+    <line x1="100" y1="177" x2="100" y2="185" class="axis"/>
+    <text x="100" y="202" class="unit">0</text>
+  </g>
+
+  <g transform="translate(616 378)">
+    <rect width="536" height="226" rx="10" class="panel"/>
+    <text x="22" y="34" class="heading">Peak sampled Python + child RSS</text>
+    <text x="22" y="54" class="unit">MiB · approximate process memory, not system-wide RAM</text>
+    <text x="22" y="102" class="series">Phase 6</text>
+    <rect x="100" y="82" width="338" height="28" rx="4" class="phase6"/>
+    <text x="448" y="101" class="value">759.8</text>
+    <text x="22" y="151" class="series">Phase 7</text>
+    <rect x="100" y="131" width="334.0" height="28" rx="4" class="phase7"/>
+    <text x="444" y="150" class="value">750.9</text>
+    <line x1="100" y1="181" x2="438" y2="181" class="axis"/>
+    <line x1="100" y1="177" x2="100" y2="185" class="axis"/>
+    <text x="100" y="202" class="unit">0</text>
+  </g>
+</svg>

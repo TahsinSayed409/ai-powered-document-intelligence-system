@@ -1,0 +1,58 @@
+{
+  "synthetic": true,
+  "documents": [
+    {
+      "filename": "digital_invoice.pdf",
+      "format": "digital PDF",
+      "expected_invoice_number": "ACCEPT-PDF-001",
+      "expected_pages": 1,
+      "expected_ocr": false,
+      "expected_line_item_count": 2
+    },
+    {
+      "filename": "scanned_invoice.pdf",
+      "format": "two-page image-only scanned PDF",
+      "expected_invoice_number": "ACCEPT-SCAN-002",
+      "expected_pages": 2,
+      "expected_ocr": true,
+      "expected_line_item_count": 2,
+      "expected_missing_fields": [
+        "customer_name",
+        "subtotal"
+      ],
+      "page_two_marker": "Page two"
+    },
+    {
+      "filename": "image_invoice.png",
+      "format": "PNG invoice image",
+      "expected_invoice_number": "ACCEPT-PNG-003",
+      "expected_pages": 1,
+      "expected_ocr": true,
+      "expected_line_item_count": 2
+    },
+    {
+      "filename": "spreadsheet_invoice.xlsx",
+      "format": "XLSX invoice",
+      "expected_invoice_number": "ACCEPT-XLSX-004",
+      "expected_pages": 3,
+      "expected_ocr": false,
+      "expected_line_item_count": 2
+    },
+    {
+      "filename": "table_invoice.csv",
+      "format": "CSV invoice",
+      "expected_invoice_number": "ACCEPT-CSV-005",
+      "expected_pages": 1,
+      "expected_ocr": false,
+      "expected_line_item_count": 2
+    },
+    {
+      "filename": "image_invoice.jpg",
+      "format": "JPG invoice image",
+      "expected_invoice_number": "ACCEPT-JPG-006",
+      "expected_pages": 1,
+      "expected_ocr": true,
+      "expected_line_item_count": 2
+    }
+  ]
+}

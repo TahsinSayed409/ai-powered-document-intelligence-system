@@ -1,0 +1,263 @@
+{
+  "summary": {
+    "dataset": "synthetic_labeled_invoice_fixtures",
+    "real_world_dataset": false,
+    "evaluated_at": "2026-11-08T06:26:18.245693+00:00",
+    "provider": "ollama",
+    "model": "qwen2.5:3b",
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "embedding_dimension": 384,
+    "inference_device": "CPU",
+    "hardware": "Intel Core i7-1355U, 16 GB RAM, Intel Iris Xe integrated graphics",
+    "ollama_context_length": 4096,
+    "input_representation": "labeled synthetic extracted text; OCR accuracy not evaluated",
+    "dataset_size": 3,
+    "successful_documents": 3,
+    "failed_documents": 0,
+    "field_level_accuracy": 1.0,
+    "field_level_comparison_count": 27,
+    "scalar_field_comparisons": 24,
+    "line_item_list_comparisons": 3,
+    "field_level_accuracy_unit": "one comparison per scalar field and one all-or-nothing ordered line_items list comparison per successful extraction",
+    "field_level_accuracy_by_field": {
+      "invoice_number": 1.0,
+      "invoice_date": 1.0,
+      "supplier_name": 1.0,
+      "customer_name": 1.0,
+      "subtotal": 1.0,
+      "tax": 1.0,
+      "total": 1.0,
+      "currency": 1.0,
+      "line_items": 1.0
+    },
+    "exact_invoice_number_accuracy": 1.0,
+    "missing_field_handling_accuracy": 1.0,
+    "invoice_level_accuracy": 1.0,
+    "accuracy_denominator": "successful extractions only; failures are reported separately",
+    "processing_time_seconds": 162.143899,
+    "average_processing_time_seconds": 54.047966,
+    "document_success_rate": 1.0,
+    "document_failure_rate": 0.0
+  },
+  "documents": [
+    {
+      "document": "synthetic-invoice-001",
+      "success": true,
+      "processing_time_seconds": 52.337687,
+      "field_matches": {
+        "invoice_number": true,
+        "invoice_date": true,
+        "supplier_name": true,
+        "customer_name": true,
+        "subtotal": true,
+        "tax": true,
+        "total": true,
+        "currency": true,
+        "line_items": true
+      },
+      "field_values": {
+        "invoice_number": {
+          "actual": "INV-1001",
+          "expected": "INV-1001"
+        },
+        "invoice_date": {
+          "actual": "2026-01-15",
+          "expected": "2026-01-15"
+        },
+        "supplier_name": {
+          "actual": "Northwind Limited",
+          "expected": "Northwind Limited"
+        },
+        "customer_name": {
+          "actual": "Contoso Retail",
+          "expected": "Contoso Retail"
+        },
+        "subtotal": {
+          "actual": 20.0,
+          "expected": 20.0
+        },
+        "tax": {
+          "actual": 2.0,
+          "expected": 2.0
+        },
+        "total": {
+          "actual": 22.0,
+          "expected": 22.0
+        },
+        "currency": {
+          "actual": "USD",
+          "expected": "USD"
+        },
+        "line_items": {
+          "actual": [
+            {
+              "description": "Widget A",
+              "quantity": 2.0,
+              "unit_price": 10.0,
+              "tax": null,
+              "line_total": 20.0,
+              "evidence": "Widget A | Qty 2 | Unit 10.00 | Line Total 20.00",
+              "confidence": 1.0
+            }
+          ],
+          "expected": [
+            {
+              "description": "Widget A",
+              "quantity": 2.0,
+              "unit_price": 10.0,
+              "tax": null,
+              "line_total": 20.0
+            }
+          ]
+        }
+      },
+      "invoice_exact_match": true
+    },
+    {
+      "document": "synthetic-invoice-002",
+      "success": true,
+      "processing_time_seconds": 56.466306,
+      "field_matches": {
+        "invoice_number": true,
+        "invoice_date": true,
+        "supplier_name": true,
+        "customer_name": true,
+        "subtotal": true,
+        "tax": true,
+        "total": true,
+        "currency": true,
+        "line_items": true
+      },
+      "field_values": {
+        "invoice_number": {
+          "actual": "EU-778",
+          "expected": "EU-778"
+        },
+        "invoice_date": {
+          "actual": "2026-02-20",
+          "expected": "02/20/2026"
+        },
+        "supplier_name": {
+          "actual": "Urban Supply",
+          "expected": "Urban Supply"
+        },
+        "customer_name": {
+          "actual": "Helio Traders",
+          "expected": "Helio Traders"
+        },
+        "subtotal": {
+          "actual": null,
+          "expected": null
+        },
+        "tax": {
+          "actual": 80.0,
+          "expected": 80.0
+        },
+        "total": {
+          "actual": 650.0,
+          "expected": 650.0
+        },
+        "currency": {
+          "actual": "EUR",
+          "expected": "EUR"
+        },
+        "line_items": {
+          "actual": [
+            {
+              "description": "Office chairs",
+              "quantity": 3.0,
+              "unit_price": 190.0,
+              "tax": null,
+              "line_total": 570.0,
+              "evidence": "Office chairs | 3 x 190.00 | 570.00",
+              "confidence": 0.0
+            }
+          ],
+          "expected": [
+            {
+              "description": "Office chairs",
+              "quantity": 3.0,
+              "unit_price": 190.0,
+              "tax": null,
+              "line_total": 570.0
+            }
+          ]
+        }
+      },
+      "invoice_exact_match": true
+    },
+    {
+      "document": "synthetic-invoice-003",
+      "success": true,
+      "processing_time_seconds": 53.339906,
+      "field_matches": {
+        "invoice_number": true,
+        "invoice_date": true,
+        "supplier_name": true,
+        "customer_name": true,
+        "subtotal": true,
+        "tax": true,
+        "total": true,
+        "currency": true,
+        "line_items": true
+      },
+      "field_values": {
+        "invoice_number": {
+          "actual": "AC-9007",
+          "expected": "AC-9007"
+        },
+        "invoice_date": {
+          "actual": "2026-03-12",
+          "expected": "2026-03-12"
+        },
+        "supplier_name": {
+          "actual": "Aster Logistics",
+          "expected": "Aster Logistics"
+        },
+        "customer_name": {
+          "actual": null,
+          "expected": null
+        },
+        "subtotal": {
+          "actual": 240.0,
+          "expected": 240.0
+        },
+        "tax": {
+          "actual": 0.0,
+          "expected": 0.0
+        },
+        "total": {
+          "actual": 240.0,
+          "expected": 240.0
+        },
+        "currency": {
+          "actual": "BDT",
+          "expected": "BDT"
+        },
+        "line_items": {
+          "actual": [
+            {
+              "description": "Freight service",
+              "quantity": 1.0,
+              "unit_price": 240.0,
+              "tax": null,
+              "line_total": 240.0,
+              "evidence": "Line: Freight service | 1 | 240.00 | 240.00",
+              "confidence": 1.0
+            }
+          ],
+          "expected": [
+            {
+              "description": "Freight service",
+              "quantity": 1.0,
+              "unit_price": 240.0,
+              "tax": null,
+              "line_total": 240.0
+            }
+          ]
+        }
+      },
+      "invoice_exact_match": true
+    }
+  ]
+}

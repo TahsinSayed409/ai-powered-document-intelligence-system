@@ -1,0 +1,905 @@
+{
+  "created_at": "2026-11-07T17:28:19.270151+00:00",
+  "dataset": "reproducible synthetic document fixtures",
+  "model": "qwen2.5:3b",
+  "provider": "ollama",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_device": "CPU",
+  "tesseract_path": "E:\\Tesseract-OCR\\tesseract.exe",
+  "tesseract_version": "5.5.3.20260724",
+  "host_hardware": "Intel Core i7-1355U, 16 GB RAM, Intel Iris Xe",
+  "system_memory_total_gb": 15.64,
+  "document_count": 6,
+  "passed_documents": 6,
+  "failed_documents": 0,
+  "average_llm_extraction_seconds": 64.068,
+  "average_ocr_seconds_per_ocr_document": 0.403,
+  "average_embedding_generation_seconds": 2.261,
+  "average_total_processing_seconds": 66.646,
+  "peak_process_plus_child_rss_mb": 762.8,
+  "memory_measurement": "Approximate peak resident memory of the acceptance Python process and its child processes; sampled every 50 ms, system-wide free memory was not attributed to this workload.",
+  "results": [
+    {
+      "filename": "digital_invoice.pdf",
+      "format": "digital PDF",
+      "status": "PASS",
+      "document_id": 1,
+      "job_id": 1,
+      "job_claimed_by_worker": true,
+      "document_status": "processed",
+      "invoice_number": "ACCEPT-PDF-001",
+      "expected_invoice_number": "ACCEPT-PDF-001",
+      "invoice_number_matches": true,
+      "page_count": 1,
+      "expected_page_count": 1,
+      "page_metadata": [
+        {
+          "page": 1,
+          "has_images": false,
+          "word_count": 46,
+          "ocr_confidence": null
+        }
+      ],
+      "ocr": {
+        "expected": false,
+        "tesseract_calls": 0,
+        "seconds": 0,
+        "tesseract_version": null,
+        "text": null,
+        "text_reached_ollama": true
+      },
+      "llm_seconds": 53.153,
+      "llm_calls": 1,
+      "embedding_seconds": 13.181,
+      "total_processing_seconds": 66.366,
+      "peak_rss_python_and_children_mb": 641.6,
+      "persisted_extraction": true,
+      "persisted_line_items": 0,
+      "line_items_extracted": false,
+      "persisted_embedding_chunks": 1,
+      "missing_field_checks": {},
+      "validation_issues": [],
+      "extracted_data": {
+        "invoice_number": "ACCEPT-PDF-001",
+        "invoice_date": "2026-10-25",
+        "supplier_name": "Maple Office Supply Ltd",
+        "customer_name": "Northstar Clinic",
+        "subtotal": 25.0,
+        "tax": 2.5,
+        "total": 27.5,
+        "currency": "USD",
+        "line_items": [],
+        "field_assessments": [
+          {
+            "field": "invoice_number",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Invoice Number: ACCEPT-PDF-001"
+          },
+          {
+            "field": "invoice_date",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Invoice Date: 2026-10-25"
+          },
+          {
+            "field": "supplier_name",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Supplier: Maple Office Supply Ltd"
+          },
+          {
+            "field": "customer_name",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Bill To: Northstar Clinic"
+          },
+          {
+            "field": "subtotal",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Subtotal: 25.00"
+          },
+          {
+            "field": "tax",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Tax: 2.50"
+          },
+          {
+            "field": "total",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Grand Total: 27.50"
+          },
+          {
+            "field": "currency",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Currency: USD"
+          }
+        ],
+        "uncertain_fields": [],
+        "confidence": 1.0,
+        "source_file": "digital_invoice.pdf",
+        "source_type": "ollama_chat",
+        "model": "qwen2.5:3b",
+        "chunks_processed": 1,
+        "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+        "embedding_dimension": 384
+      }
+    },
+    {
+      "filename": "scanned_invoice.pdf",
+      "format": "two-page image-only scanned PDF",
+      "status": "PASS",
+      "document_id": 2,
+      "job_id": 2,
+      "job_claimed_by_worker": true,
+      "document_status": "requires_review",
+      "invoice_number": "ACCEPT-SCAN-002",
+      "expected_invoice_number": "ACCEPT-SCAN-002",
+      "invoice_number_matches": true,
+      "page_count": 2,
+      "expected_page_count": 2,
+      "page_metadata": [
+        {
+          "page": 1,
+          "has_images": true,
+          "word_count": 42,
+          "ocr_confidence": 0.95
+        },
+        {
+          "page": 2,
+          "has_images": true,
+          "word_count": 8,
+          "ocr_confidence": 0.9475
+        }
+      ],
+      "ocr": {
+        "expected": true,
+        "tesseract_calls": 2,
+        "seconds": 0.425,
+        "tesseract_version": "5.5.3.20260724",
+        "text": "INVOICE Invoice Number: ACCEPT-SCAN-002 Invoice Date: 2026-10-25 Supplier: Cedar Office Supply Ltd Bill To: Currency: USD Item | Description | Qty | Unit Price | Line Total A-17 | Paper ream | 2 | 12.50 | 25.00 Tax: 2.50 Grand Total: 27.50\nRemittance note: Include ACCEPT-SCAN-002 with payment. Page two.",
+        "text_reached_ollama": true
+      },
+      "llm_seconds": 56.198,
+      "llm_calls": 1,
+      "embedding_seconds": 0.067,
+      "total_processing_seconds": 57.003,
+      "peak_rss_python_and_children_mb": 758.2,
+      "persisted_extraction": true,
+      "persisted_line_items": 1,
+      "line_items_extracted": true,
+      "persisted_embedding_chunks": 1,
+      "missing_field_checks": {
+        "customer_name": true,
+        "subtotal": true
+      },
+      "validation_issues": [
+        {
+          "severity": "warning",
+          "field": "invoice_date",
+          "message": "Uncertain invoice date; manual review is required."
+        },
+        {
+          "severity": "warning",
+          "field": "customer_name",
+          "message": "Missing customer name."
+        },
+        {
+          "severity": "warning",
+          "field": "subtotal",
+          "message": "Uncertain subtotal; manual review is required."
+        }
+      ],
+      "extracted_data": {
+        "invoice_number": "ACCEPT-SCAN-002",
+        "invoice_date": null,
+        "supplier_name": "Cedar Office Supply Ltd",
+        "customer_name": null,
+        "subtotal": null,
+        "tax": 2.5,
+        "total": 27.5,
+        "currency": "USD",
+        "line_items": [
+          {
+            "description": "Paper ream",
+            "quantity": 2.0,
+            "unit_price": 12.5,
+            "tax": null,
+            "line_total": 25.0,
+            "evidence": "A-17 | Paper ream | 2 | 12.50 | 25.00",
+            "confidence": 0.0
+          }
+        ],
+        "field_assessments": [
+          {
+            "field": "invoice_number",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "INVOICE Invoice Number: ACCEPT-SCAN-002"
+          },
+          {
+            "field": "invoice_date",
+            "status": "uncertain",
+            "confidence": 1.0,
+            "evidence": "INVOICE Invoice Date: 2026-10-25"
+          },
+          {
+            "field": "supplier_name",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Supplier: Cedar Office Supply Ltd"
+          },
+          {
+            "field": "customer_name",
+            "status": "missing",
+            "confidence": 1.0,
+            "evidence": null
+          },
+          {
+            "field": "subtotal",
+            "status": "uncertain",
+            "confidence": 1.0,
+            "evidence": "Subtotal: 25.00"
+          },
+          {
+            "field": "tax",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Tax: 2.50"
+          },
+          {
+            "field": "total",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Grand Total: 27.50"
+          },
+          {
+            "field": "currency",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Currency: USD"
+          }
+        ],
+        "uncertain_fields": [
+          "invoice_date",
+          "subtotal"
+        ],
+        "confidence": 1.0,
+        "source_file": "scanned_invoice.pdf",
+        "source_type": "ollama_chat",
+        "model": "qwen2.5:3b",
+        "chunks_processed": 1,
+        "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+        "embedding_dimension": 384
+      }
+    },
+    {
+      "filename": "image_invoice.png",
+      "format": "PNG invoice image",
+      "status": "PASS",
+      "document_id": 3,
+      "job_id": 3,
+      "job_claimed_by_worker": true,
+      "document_status": "requires_review",
+      "invoice_number": "ACCEPT-PNG-003",
+      "expected_invoice_number": "ACCEPT-PNG-003",
+      "invoice_number_matches": true,
+      "page_count": 1,
+      "expected_page_count": 1,
+      "page_metadata": [
+        {
+          "page": 1,
+          "ocr_confidence": 0.9408695652173913
+        }
+      ],
+      "ocr": {
+        "expected": true,
+        "tesseract_calls": 1,
+        "seconds": 0.394,
+        "tesseract_version": "5.5.3.20260724",
+        "text": "INVOICE Invoice Number: ACCEPT-PNG-003 Invoice Date: 2026-10-25 Supplier: Pine Office Supply Ltd Bill To: Northstar Clinic Currency: USD Item | Description | Qty | Unit Price | Line Total A-17 | Paper ream | 2 | 12.50 | 25.00 Subtotal: 25.00 Tax: 2.50 Grand Total: 27.50",
+        "text_reached_ollama": true
+      },
+      "llm_seconds": 58.2,
+      "llm_calls": 1,
+      "embedding_seconds": 0.05,
+      "total_processing_seconds": 58.771,
+      "peak_rss_python_and_children_mb": 753.7,
+      "persisted_extraction": true,
+      "persisted_line_items": 1,
+      "line_items_extracted": true,
+      "persisted_embedding_chunks": 1,
+      "missing_field_checks": {},
+      "validation_issues": [
+        {
+          "severity": "warning",
+          "field": "invoice_date",
+          "message": "Uncertain invoice date; manual review is required."
+        }
+      ],
+      "extracted_data": {
+        "invoice_number": "ACCEPT-PNG-003",
+        "invoice_date": null,
+        "supplier_name": "Pine Office Supply Ltd",
+        "customer_name": "Northstar Clinic",
+        "subtotal": 25.0,
+        "tax": 2.5,
+        "total": 27.5,
+        "currency": "USD",
+        "line_items": [
+          {
+            "description": "Paper ream",
+            "quantity": 2.0,
+            "unit_price": 12.5,
+            "tax": null,
+            "line_total": 25.0,
+            "evidence": "A-17 | Paper ream | 2 | 12.50 | 25.00",
+            "confidence": 1.0
+          }
+        ],
+        "field_assessments": [
+          {
+            "field": "invoice_number",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "INVOICE Invoice Number: ACCEPT-PNG-003"
+          },
+          {
+            "field": "invoice_date",
+            "status": "uncertain",
+            "confidence": 1.0,
+            "evidence": "INVOICE Invoice Date: 2026-10-25"
+          },
+          {
+            "field": "supplier_name",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Supplier: Pine Office Supply Ltd"
+          },
+          {
+            "field": "customer_name",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Bill To: Northstar Clinic"
+          },
+          {
+            "field": "subtotal",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Subtotal: 25.00"
+          },
+          {
+            "field": "tax",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Tax: 2.50"
+          },
+          {
+            "field": "total",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Grand Total: 27.50"
+          },
+          {
+            "field": "currency",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Currency: USD"
+          }
+        ],
+        "uncertain_fields": [
+          "invoice_date"
+        ],
+        "confidence": 1.0,
+        "source_file": "image_invoice.png",
+        "source_type": "ollama_chat",
+        "model": "qwen2.5:3b",
+        "chunks_processed": 1,
+        "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+        "embedding_dimension": 384
+      }
+    },
+    {
+      "filename": "spreadsheet_invoice.xlsx",
+      "format": "XLSX invoice",
+      "status": "PASS",
+      "document_id": 4,
+      "job_id": 4,
+      "job_claimed_by_worker": true,
+      "document_status": "processed",
+      "invoice_number": "ACCEPT-XLSX-004",
+      "expected_invoice_number": "ACCEPT-XLSX-004",
+      "invoice_number_matches": true,
+      "page_count": 1,
+      "expected_page_count": 1,
+      "page_metadata": [
+        {
+          "sheet_name": "Invoice",
+          "rows": [
+            {
+              "Field": "Invoice Number",
+              "Value": "ACCEPT-XLSX-004",
+              "Description": NaN,
+              "Quantity": NaN,
+              "Unit Price": NaN,
+              "Line Total": NaN
+            },
+            {
+              "Field": "Invoice Date",
+              "Value": "2026-10-25",
+              "Description": NaN,
+              "Quantity": NaN,
+              "Unit Price": NaN,
+              "Line Total": NaN
+            },
+            {
+              "Field": "Supplier",
+              "Value": "Willow Office Supply Ltd",
+              "Description": NaN,
+              "Quantity": NaN,
+              "Unit Price": NaN,
+              "Line Total": NaN
+            },
+            {
+              "Field": "Bill To",
+              "Value": "Northstar Clinic",
+              "Description": NaN,
+              "Quantity": NaN,
+              "Unit Price": NaN,
+              "Line Total": NaN
+            },
+            {
+              "Field": "Currency",
+              "Value": "USD",
+              "Description": NaN,
+              "Quantity": NaN,
+              "Unit Price": NaN,
+              "Line Total": NaN
+            },
+            {
+              "Field": "Subtotal",
+              "Value": "25.00",
+              "Description": NaN,
+              "Quantity": NaN,
+              "Unit Price": NaN,
+              "Line Total": NaN
+            },
+            {
+              "Field": "Tax",
+              "Value": "2.50",
+              "Description": NaN,
+              "Quantity": NaN,
+              "Unit Price": NaN,
+              "Line Total": NaN
+            },
+            {
+              "Field": "Grand Total",
+              "Value": "27.50",
+              "Description": NaN,
+              "Quantity": NaN,
+              "Unit Price": NaN,
+              "Line Total": NaN
+            },
+            {
+              "Field": NaN,
+              "Value": NaN,
+              "Description": "Paper ream",
+              "Quantity": "2",
+              "Unit Price": "12.5",
+              "Line Total": "25"
+            }
+          ]
+        }
+      ],
+      "ocr": {
+        "expected": false,
+        "tesseract_calls": 0,
+        "seconds": 0,
+        "tesseract_version": null,
+        "text": null,
+        "text_reached_ollama": true
+      },
+      "llm_seconds": 80.937,
+      "llm_calls": 1,
+      "embedding_seconds": 0.106,
+      "total_processing_seconds": 81.103,
+      "peak_rss_python_and_children_mb": 697.4,
+      "persisted_extraction": true,
+      "persisted_line_items": 1,
+      "line_items_extracted": true,
+      "persisted_embedding_chunks": 1,
+      "missing_field_checks": {},
+      "validation_issues": [],
+      "extracted_data": {
+        "invoice_number": "ACCEPT-XLSX-004",
+        "invoice_date": "2026-10-25",
+        "supplier_name": "Willow Office Supply Ltd",
+        "customer_name": "Northstar Clinic",
+        "subtotal": 25.0,
+        "tax": 2.5,
+        "total": 27.5,
+        "currency": "USD",
+        "line_items": [
+          {
+            "description": null,
+            "quantity": null,
+            "unit_price": null,
+            "tax": null,
+            "line_total": 25.0,
+            "evidence": "Field: Subtotal | Value: 25.00 | Description: nan | Quantity: nan | Unit Price: nan | Line Total: nan",
+            "confidence": 0.0
+          }
+        ],
+        "field_assessments": [
+          {
+            "field": "invoice_number",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Field: Invoice Number | Value: ACCEPT-XLSX-004 | Description: nan | Quantity: nan | Unit Price: nan | Line Total: nan"
+          },
+          {
+            "field": "invoice_date",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Field: Invoice Date | Value: 2026-10-25 | Description: nan | Quantity: nan | Unit Price: nan | Line Total: nan"
+          },
+          {
+            "field": "supplier_name",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Field: Supplier | Value: Willow Office Supply Ltd | Description: nan | Quantity: nan | Unit Price: nan | Line Total: nan"
+          },
+          {
+            "field": "customer_name",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Field: Bill To | Value: Northstar Clinic | Description: nan | Quantity: nan | Unit Price: nan | Line Total: nan"
+          },
+          {
+            "field": "subtotal",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Field: Subtotal | Value: 25.00 | Description: nan | Quantity: nan | Unit Price: nan | Line Total: nan"
+          },
+          {
+            "field": "tax",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Field: Tax | Value: 2.50 | Description: nan | Quantity: nan | Unit Price: nan | Line Total: nan"
+          },
+          {
+            "field": "total",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Field: Grand Total | Value: 27.50 | Description: nan | Quantity: nan | Unit Price: nan | Line Total: nan"
+          },
+          {
+            "field": "currency",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Field: Currency | Value: USD | Description: nan | Quantity: nan | Unit Price: nan | Line Total: nan"
+          }
+        ],
+        "uncertain_fields": [],
+        "confidence": 1.0,
+        "source_file": "spreadsheet_invoice.xlsx",
+        "source_type": "ollama_chat",
+        "model": "qwen2.5:3b",
+        "chunks_processed": 1,
+        "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+        "embedding_dimension": 384
+      }
+    },
+    {
+      "filename": "table_invoice.csv",
+      "format": "CSV invoice",
+      "status": "PASS",
+      "document_id": 5,
+      "job_id": 5,
+      "job_claimed_by_worker": true,
+      "document_status": "processed",
+      "invoice_number": "ACCEPT-CSV-005",
+      "expected_invoice_number": "ACCEPT-CSV-005",
+      "invoice_number_matches": true,
+      "page_count": 1,
+      "expected_page_count": 1,
+      "page_metadata": [
+        {
+          "sheet_name": "csv",
+          "rows": [
+            {
+              "Field": "Invoice Number",
+              "Value": "ACCEPT-CSV-005",
+              "Description": NaN,
+              "Quantity": NaN,
+              "Unit Price": NaN,
+              "Line Total": NaN
+            },
+            {
+              "Field": "Invoice Date",
+              "Value": "2026-10-25",
+              "Description": NaN,
+              "Quantity": NaN,
+              "Unit Price": NaN,
+              "Line Total": NaN
+            },
+            {
+              "Field": "Supplier",
+              "Value": "Birch Office Supply Ltd",
+              "Description": NaN,
+              "Quantity": NaN,
+              "Unit Price": NaN,
+              "Line Total": NaN
+            },
+            {
+              "Field": "Bill To",
+              "Value": "Northstar Clinic",
+              "Description": NaN,
+              "Quantity": NaN,
+              "Unit Price": NaN,
+              "Line Total": NaN
+            },
+            {
+              "Field": "Currency",
+              "Value": "USD",
+              "Description": NaN,
+              "Quantity": NaN,
+              "Unit Price": NaN,
+              "Line Total": NaN
+            },
+            {
+              "Field": "Subtotal",
+              "Value": "25.00",
+              "Description": NaN,
+              "Quantity": NaN,
+              "Unit Price": NaN,
+              "Line Total": NaN
+            },
+            {
+              "Field": "Tax",
+              "Value": "2.50",
+              "Description": NaN,
+              "Quantity": NaN,
+              "Unit Price": NaN,
+              "Line Total": NaN
+            },
+            {
+              "Field": "Grand Total",
+              "Value": "27.50",
+              "Description": NaN,
+              "Quantity": NaN,
+              "Unit Price": NaN,
+              "Line Total": NaN
+            },
+            {
+              "Field": NaN,
+              "Value": NaN,
+              "Description": "Paper ream",
+              "Quantity": "2",
+              "Unit Price": "12.50",
+              "Line Total": "25.00"
+            }
+          ]
+        }
+      ],
+      "ocr": {
+        "expected": false,
+        "tesseract_calls": 0,
+        "seconds": 0,
+        "tesseract_version": null,
+        "text": null,
+        "text_reached_ollama": true
+      },
+      "llm_seconds": 81.391,
+      "llm_calls": 1,
+      "embedding_seconds": 0.129,
+      "total_processing_seconds": 81.56,
+      "peak_rss_python_and_children_mb": 697.9,
+      "persisted_extraction": true,
+      "persisted_line_items": 0,
+      "line_items_extracted": false,
+      "persisted_embedding_chunks": 1,
+      "missing_field_checks": {},
+      "validation_issues": [],
+      "extracted_data": {
+        "invoice_number": "ACCEPT-CSV-005",
+        "invoice_date": "2026-10-25",
+        "supplier_name": "Birch Office Supply Ltd",
+        "customer_name": "Northstar Clinic",
+        "subtotal": 25.0,
+        "tax": 2.5,
+        "total": 27.5,
+        "currency": "USD",
+        "line_items": [],
+        "field_assessments": [
+          {
+            "field": "invoice_number",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Field: Invoice Number | Value: ACCEPT-CSV-005 | Description: nan | Quantity: nan | Unit Price: nan | Line Total: nan"
+          },
+          {
+            "field": "invoice_date",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Field: Invoice Date | Value: 2026-10-25 | Description: nan | Quantity: nan | Unit Price: nan | Line Total: nan"
+          },
+          {
+            "field": "supplier_name",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Field: Supplier | Value: Birch Office Supply Ltd | Description: nan | Quantity: nan | Unit Price: nan | Line Total: nan"
+          },
+          {
+            "field": "customer_name",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Field: Bill To | Value: Northstar Clinic | Description: nan | Quantity: nan | Unit Price: nan | Line Total: nan"
+          },
+          {
+            "field": "subtotal",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Field: Subtotal | Value: 25.00 | Description: nan | Quantity: nan | Unit Price: nan | Line Total: nan"
+          },
+          {
+            "field": "tax",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Field: Tax | Value: 2.50 | Description: nan | Quantity: nan | Unit Price: nan | Line Total: nan"
+          },
+          {
+            "field": "total",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Field: Grand Total | Value: 27.50 | Description: nan | Quantity: nan | Unit Price: nan | Line Total: nan"
+          },
+          {
+            "field": "currency",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Field: Currency | Value: USD | Description: nan | Quantity: nan | Unit Price: nan | Line Total: nan"
+          }
+        ],
+        "uncertain_fields": [],
+        "confidence": 1.0,
+        "source_file": "table_invoice.csv",
+        "source_type": "ollama_chat",
+        "model": "qwen2.5:3b",
+        "chunks_processed": 1,
+        "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+        "embedding_dimension": 384
+      }
+    },
+    {
+      "filename": "image_invoice.jpg",
+      "format": "JPG invoice image",
+      "status": "PASS",
+      "document_id": 6,
+      "job_id": 6,
+      "job_claimed_by_worker": true,
+      "document_status": "requires_review",
+      "invoice_number": "ACCEPT-JPG-006",
+      "expected_invoice_number": "ACCEPT-JPG-006",
+      "invoice_number_matches": true,
+      "page_count": 1,
+      "expected_page_count": 1,
+      "page_metadata": [
+        {
+          "page": 1,
+          "ocr_confidence": 0.9382608695652174
+        }
+      ],
+      "ocr": {
+        "expected": true,
+        "tesseract_calls": 1,
+        "seconds": 0.391,
+        "tesseract_version": "5.5.3.20260724",
+        "text": "INVOICE Invoice Number: ACCEPT-JPG-006 Invoice Date: 2026-10-25 Supplier: Oak Office Supply Ltd Bill To: Northstar Clinic Currency: USD Item | Description | Qty | Unit Price | Line Total A-17 | Paper ream | 2 | 12.50 | 25.00 Subtotal: 25.00 Tax: 2.50 Grand Total: 27.50",
+        "text_reached_ollama": true
+      },
+      "llm_seconds": 54.53,
+      "llm_calls": 1,
+      "embedding_seconds": 0.033,
+      "total_processing_seconds": 55.074,
+      "peak_rss_python_and_children_mb": 762.8,
+      "persisted_extraction": true,
+      "persisted_line_items": 1,
+      "line_items_extracted": true,
+      "persisted_embedding_chunks": 1,
+      "missing_field_checks": {},
+      "validation_issues": [
+        {
+          "severity": "warning",
+          "field": "invoice_date",
+          "message": "Uncertain invoice date; manual review is required."
+        }
+      ],
+      "extracted_data": {
+        "invoice_number": "ACCEPT-JPG-006",
+        "invoice_date": null,
+        "supplier_name": "Oak Office Supply Ltd",
+        "customer_name": "Northstar Clinic",
+        "subtotal": 25.0,
+        "tax": 2.5,
+        "total": 27.5,
+        "currency": "USD",
+        "line_items": [
+          {
+            "description": "Paper ream",
+            "quantity": 2.0,
+            "unit_price": 12.5,
+            "tax": null,
+            "line_total": 25.0,
+            "evidence": "A-17 | Paper ream | 2 | 12.50 | 25.00",
+            "confidence": 1.0
+          }
+        ],
+        "field_assessments": [
+          {
+            "field": "invoice_number",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "INVOICE Invoice Number: ACCEPT-JPG-006"
+          },
+          {
+            "field": "invoice_date",
+            "status": "uncertain",
+            "confidence": 1.0,
+            "evidence": "INVOICE Invoice Date: 2026-10-25"
+          },
+          {
+            "field": "supplier_name",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Supplier: Oak Office Supply Ltd"
+          },
+          {
+            "field": "customer_name",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Bill To: Northstar Clinic"
+          },
+          {
+            "field": "subtotal",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Subtotal: 25.00"
+          },
+          {
+            "field": "tax",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Tax: 2.50"
+          },
+          {
+            "field": "total",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Grand Total: 27.50"
+          },
+          {
+            "field": "currency",
+            "status": "found",
+            "confidence": 1.0,
+            "evidence": "Currency: USD"
+          }
+        ],
+        "uncertain_fields": [
+          "invoice_date"
+        ],
+        "confidence": 1.0,
+        "source_file": "image_invoice.jpg",
+        "source_type": "ollama_chat",
+        "model": "qwen2.5:3b",
+        "chunks_processed": 1,
+        "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+        "embedding_dimension": 384
+      }
+    }
+  ]
+}

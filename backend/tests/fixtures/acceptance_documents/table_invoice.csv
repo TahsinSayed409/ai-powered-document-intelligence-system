@@ -1,0 +1,11 @@
+﻿Field,Value,Product,Quantity,Unit Price,Tax,Line Total
+Invoice Number,ACCEPT-CSV-005,,,,,
+Invoice Date,2026-10-25,,,,,
+Supplier,Birch Office Supply Ltd,,,,,
+Bill To,Northstar Clinic,,,,,
+Currency,USD,,,,,
+Subtotal,30.00,,,,,
+Tax,3.00,,,,,
+Grand Total,33.00,,,,,
+,,Paper ream,2,12.50,2.50,25.00
+,,Pens,1,5.00,0.50,5.00

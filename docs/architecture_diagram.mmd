@@ -1,0 +1,115 @@
+%%{init: {"flowchart": {"defaultRenderer": "elk"}}}%%
+flowchart TB
+    subgraph frontend["User and React frontend"]
+        User[User / reviewer] --> UI[React 19<br/>TypeScript dashboard]
+    end
+
+    subgraph api["FastAPI API layer"]
+        API[FastAPI REST API]
+        subgraph search["Search and comparison"]
+            direction LR
+            Keyword[Keyword search<br/>metadata + indexed text]
+            Semantic[Semantic search<br/>local query embedding + cosine]
+            Compare[Compare extracted fields<br/>and line items]
+        end
+        API --> Keyword
+        API --> Semantic
+        API --> Compare
+    end
+
+    subgraph intake["Upload and job creation"]
+        Upload[Validate count, extension,<br/>size, and content]
+        File[(Local upload directory)]
+        Queue[(SQL-backed job queue)]
+        Upload -->|save original file| File
+        Upload -->|create document and queued job| Queue
+    end
+
+    subgraph worker["Background worker"]
+        Worker[Independent SQL-polling worker]
+    end
+
+    subgraph parsing["Document parsing and OCR"]
+        direction LR
+        subgraph pdf["A. PDF"]
+            direction TB
+            PDF[PyMuPDF page text<br/>and table extraction]
+            Gate{Images present and<br/>fewer than 10 native words?}
+            Render[Render PDF page]
+            PDFOCR[Tesseract OCR]
+            PDF --> Gate
+            Gate -->|Yes| Render --> PDFOCR
+        end
+        subgraph images["B. Images and TIFF"]
+            direction TB
+            Pillow[Pillow decode / iterate frames]
+            ImageOCR[Tesseract OCR]
+            Pillow --> ImageOCR
+        end
+        subgraph sheets["C. CSV, XLS, XLSX"]
+            direction TB
+            Tables[pandas and workbook engines<br/>read tables and sheets]
+        end
+    end
+
+    subgraph normalize["Shared normalization and source"]
+        Source[Source text, tables,<br/>page / sheet provenance]
+        Normalize[Normalize table rows<br/>and invoice metadata]
+        Source --> Normalize
+    end
+
+    subgraph extraction["AI extraction and evidence grounding"]
+        direction LR
+        Route{Sufficient structured<br/>spreadsheet data?}
+        Deterministic[Deterministic spreadsheet<br/>fields and line items]
+        Ollama[Local Ollama<br/>Qwen 2.5 3B, JSON Schema]
+        Merge[Combine extracted fields<br/>with detected table line items]
+        Ground[Schema validation<br/>and source evidence checks]
+        Route -->|Yes| Deterministic --> Ground
+        Route -->|No / other source| Ollama --> Merge --> Ground
+    end
+
+    subgraph persistence["Validation and persistence"]
+        direction LR
+        Validate[Financial checks<br/>and duplicate review]
+        Embed[Local Sentence Transformers<br/>all-MiniLM-L6-v2, CPU]
+        DB[(SQL database<br/>SQLite default / PostgreSQL supported)]
+        Validate --> DB
+        Embed --> DB
+    end
+
+    UI <-->|Upload, status, results, review| API
+    API --> Upload
+    API <-->|Read / write documents, search,<br/>corrections, comparisons| DB
+    Queue -->|claim job / update status| Worker
+    File -->|read source file| Worker
+    Worker --> PDF
+    Worker --> Pillow
+    Worker --> Tables
+    PDFOCR --> Source
+    Gate -->|No: use extracted page text| Source
+    ImageOCR --> Source
+    Tables --> Source
+    Normalize --> Route
+    Normalize -->|table context and rows| Ollama
+    Ground --> Validate
+    Source --> Embed
+
+    classDef actor fill:#f4f7fb,stroke:#64748b,color:#172033,stroke-width:1.2px
+    classDef service fill:#eaf1ff,stroke:#5274bd,color:#152544,stroke-width:1.2px
+    classDef data fill:#e9f7f3,stroke:#31806e,color:#173c36,stroke-width:1.2px
+    class User actor
+    class UI,API,Upload,Worker,PDF,Gate,Render,PDFOCR,Pillow,ImageOCR,Tables,Source,Normalize,Route,Deterministic,Ollama,Merge,Ground,Validate,Embed,Keyword,Semantic,Compare service
+    class File,Queue,DB data
+    style frontend fill:#f8fafc,stroke:#94a3b8,stroke-width:1px
+    style api fill:#f8fafc,stroke:#94a3b8,stroke-width:1px
+    style search fill:#f1f5ff,stroke:#9aadd1,stroke-width:1px
+    style intake fill:#f8fafc,stroke:#94a3b8,stroke-width:1px
+    style worker fill:#f8fafc,stroke:#94a3b8,stroke-width:1px
+    style parsing fill:#f8fafc,stroke:#94a3b8,stroke-width:1px
+    style pdf fill:#ffffff,stroke:#b6c2d0,stroke-width:1px
+    style images fill:#ffffff,stroke:#b6c2d0,stroke-width:1px
+    style sheets fill:#ffffff,stroke:#b6c2d0,stroke-width:1px
+    style normalize fill:#f8fafc,stroke:#94a3b8,stroke-width:1px
+    style extraction fill:#f8fafc,stroke:#94a3b8,stroke-width:1px
+    style persistence fill:#f8fafc,stroke:#94a3b8,stroke-width:1px

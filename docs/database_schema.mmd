@@ -1,0 +1,117 @@
+erDiagram
+    DOCUMENTS ||--o{ PROCESSING_JOBS : queues
+    DOCUMENTS ||--o{ INVOICE_LINE_ITEMS : contains
+    DOCUMENTS ||--o{ VALIDATION_ISSUES : records
+    DOCUMENTS ||--o{ MANUAL_CORRECTIONS : has_corrections
+    DOCUMENTS ||--o{ SEARCH_INDEX : indexed_as
+    DOCUMENTS ||--o{ COMPARISON_RESULTS : left_document
+    DOCUMENTS ||--o{ COMPARISON_RESULTS : right_document
+
+    DOCUMENTS {
+        int id PK
+        string filename
+        string file_type
+        string storage_path
+        string status
+        string validation_status
+        text error_message
+        int file_size
+        datetime created_at
+        datetime updated_at
+        string invoice_number
+        string invoice_date
+        string supplier_name
+        string customer_name
+        float subtotal
+        float tax
+        float total
+        string currency
+        json extracted_data
+        json validation_result
+        json comparison_result
+    }
+
+    PROCESSING_JOBS {
+        int id PK
+        int document_id FK
+        string job_name
+        string status
+        int progress
+        int retries
+        datetime started_at
+        datetime finished_at
+        text error_message
+    }
+
+    INVOICE_LINE_ITEMS {
+        int id PK
+        int document_id FK
+        int ordinal
+        text description
+        float quantity
+        float unit_price
+        float tax
+        float line_total
+        text evidence
+        float confidence
+    }
+
+    VALIDATION_ISSUES {
+        int id PK
+        int document_id FK
+        string severity
+        string field
+        text message
+        datetime created_at
+    }
+
+    MANUAL_CORRECTIONS {
+        int id PK
+        int document_id FK
+        string field_name
+        text old_value
+        text new_value
+        datetime created_at
+    }
+
+    SEARCH_INDEX {
+        int id PK
+        int document_id FK
+        text text
+        json embedding
+        datetime created_at
+    }
+
+    COMPARISON_RESULTS {
+        int id PK
+        int left_document_id FK
+        int right_document_id FK
+        json comparison_data
+        datetime created_at
+    }
+
+%% INVOICE_LINE_ITEMS has a unique constraint on (document_id, ordinal).
+%% The FKs are database constraints; ORM relationship() properties are not declared.
+%% All primary keys are NOT NULL. Foreign keys are also NOT NULL; every other
+%% column is nullable unless listed below (defaults do not change nullability).
+%% Nullable DOCUMENTS: validation_status, error_message, file_size, created_at,
+%% updated_at, invoice_number, invoice_date, supplier_name, customer_name,
+%% subtotal, tax, total, currency, extracted_data, validation_result,
+%% comparison_result.
+%% Nullable PROCESSING_JOBS: status, progress, retries, started_at, finished_at,
+%% error_message. Nullable INVOICE_LINE_ITEMS: description, quantity, unit_price,
+%% tax, line_total, evidence, confidence. Nullable VALIDATION_ISSUES: created_at.
+%% Nullable MANUAL_CORRECTIONS: old_value, new_value, created_at.
+%% Nullable COMPARISON_RESULTS: created_at. Nullable SEARCH_INDEX: embedding,
+%% created_at. All other listed non-primary-key columns are NOT NULL.
+%% All child foreign keys are non-null: each job, line item, issue, correction,
+%% and search chunk belongs to exactly one DOCUMENTS row. A document can have
+%% zero or many of each. Each comparison row references exactly one document
+%% in each left/right role; a document can appear in zero or many rows per role.
+%% Processing history is represented by multiple PROCESSING_JOBS rows, not a
+%% separate history table.
+%% Extracted/indexed source text is stored in SEARCH_INDEX.text; there is no
+%% separate extracted-text table.
+%% DOCUMENTS.comparison_result is a nullable legacy JSON field and is unused by
+%% current application code. Comparisons are persisted in COMPARISON_RESULTS;
+%% populating both could duplicate comparison data, but current requests do not.
